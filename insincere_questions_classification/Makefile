@@ -9,7 +9,6 @@ BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
 PROFILE = default
 PROJECT_NAME = insincere_questions_classification
 PYTHON_INTERPRETER = python3
-#UCI_DATA_URL = https://archive.ics.uci.edu/ml/machine-learning-databases/00447/data.zip
 
 
 ifeq (,$(shell which conda))
@@ -30,7 +29,6 @@ requirements: test_environment
 ## Make Dataset
 data: requirements
 	@echo ">>> Downloading data from Kaggle."
-	#curl -o data/raw/data.zip $(UCI_DATA_URL)
 	kaggle competitions download -c quora-insincere-questions-classification -p data/raw/
 	@echo ">>> Unzipping."
 	unzip data/raw/quora-insincere-questions-classification.zip -d data/raw
